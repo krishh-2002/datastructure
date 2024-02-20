@@ -1,0 +1,24 @@
+we are using hash map and vector pair for solving this problem
+#347 leetcode
+class Solution {
+public:
+    vector<int> topKFrequent(vector<int>& nums, int k) {
+        unordered_map<int,int> mp;
+        vector<int> ans;
+        for(int i=0;i<nums.size();i++)
+        {
+            mp[nums[i]]++;
+        }
+        vector<pair<int,int>> p;
+        for(auto pair : mp){
+            p.push_back({pair.second,pair.first});
+        }
+        sort(p.begin(),p.end(),greater<pair<int,int>>());
+        for(int i=0;i<k;i++){
+            ans.push_back(p[i].second);
+        }
+        return ans;
+
+        
+    }
+};
